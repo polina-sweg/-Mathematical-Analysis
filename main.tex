@@ -1,0 +1,336 @@
+\documentclass[12pt]{article}
+% стандартные импорты
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[english,russian]{babel}
+\usepackage[russian]{cleveref}
+\usepackage{tkz-euclide}
+\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames, x11names, table]{xcolor}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{setspace}
+\usepackage{lipsum} % Для примера текста
+\usepackage{hyperref} % Пакет для гиперссылок
+
+\usepackage[a4paper,left=15mm,right=15mm,top=15mm,bottom=20mm]{geometry}
+
+ % Полуторный межстрочный интервал
+\renewcommand{\baselinestretch}{1.7} 
+% Устанавливаем отступы перед и после уравнений
+\setlength{\abovedisplayskip}{}   % Отступ перед уравнением
+\setlength{\belowdisplayskip}{0pt}   % Отступ после уравнения
+
+\title{Коллоквиум по математичекому анализу, осень 2024}
+\author{Агаркова Полина, ассистент 241}
+\date{Версия 1.0}
+
+\begin{document}
+
+
+\maketitle
+
+\tableofcontents % Генерация оглавления
+
+\newpage % Начинаем текст с новой страницы после оглавления
+
+\section*{Содержание билетов.}
+\begin{enumerate}
+    \item Понятие высказывания и n-местного предиката. Логические операции. Кванторы. Построение отрицания к высказыванию с кванторами. 
+    \item Доказательства методами математической индукции и от противного. Неравенство Бернулли. 
+    \item Перестановки, размещения и сочетания. Бином Ньютона. 
+    \item Понятие последовательности. Предел последовательности. Единственность предела. Ограниченные, бесконечно малые, бесконечно большие  и отделимые от нуля последовательности. Связь между ними. Ограниченность сходящейся последовательности. Отделимость от нуля последовательности, сходящейся не к нулю.
+    \item Арифметические свойства предела последовательности.
+    \item Предельный переход в неравенствах. Теорема о зажатой последовательности.
+    \item Ограниченные подмножества действительных чисел. Аксиома непрерывности действительных чисел. Верхняя и нижняя грань. Точная верхняя и точная нижняя грань. Теорема о существовании точной верхней и нижней грани.
+    \item Теорема Вейерштрасса.
+    \item Число е. Постоянная Эйлера.
+    \item Подпоследовательность. Предельная точка последовательности. Теорема Больцано-Вейерштрасса.
+    \item Частичный предел. Верхний и нижний предел. Эквивалентность понятий частичного предела и предельной точки.
+    \item Фундаментальные последовательности. Критерий Коши.
+    \item Предел функции в точке и на бесконечности: определения по Коши и по Гейне. Эквивалентность двух определений. Односторонние пределы. Бесконечный предел.
+    \item Арифметика предела функции. Предельный переход в неравенствах. Теорема о зажатой функции. 
+    \item (?) Асимптоты и их вычисление. 
+    \item (?) Теорема о пределе сложной функции.
+\end{enumerate}
+
+\newpage
+
+\addcontentsline{toc}{section}{Содержание программы коллоквиума.}
+
+\section{Логические операции. Кванторы. Построение отрицания}
+    \textbf{Высказывание} - утверждение, про которое можно сказать истинно оно или ложно. \\ 
+    \textbf{n-местный предикат} - высказывание с n переменными: $P(a_1, a_2, ..., a_n)$ \\
+    \textbf{Логические операции: } 
+    \begin{itemize}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $\neg$ - отрицание
+        \item $\vee$ - дизъюнкция ("или")
+        \item $\wedge$  - конъюнкия ("и")
+        \item $\to$ - импликация
+    \end{itemize}
+    \textbf{Кванторы: } 
+    \begin{itemize}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $\forall$ - квантор всеобщности
+        \item $\exists$ - квантор существования
+        \item $\exists !$  - квантор существования и единственности
+    \end{itemize}
+    \textbf{Построение отрицания к высказыванию с кванторами:}
+    \\ Пусть $P(n)$ - предикат. Тогда:
+    \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $\neg (\forall n \ P(n)) = \exists n \ \neg P(n)$
+        \item $\neg (\exists n \ P(n)) = \forall n \ \neg P(n)$
+    \end{enumerate} 
+
+\section{Доказательста по мат. индукции и от противного. Неравенство Бернулли. }
+    \textbf{Метод доказательства от противного.} Пусть $A$ - высказыание. Тогда $A$ - истина, если $\neg A$ - ложь. \\
+    \textbf{Метод математической индукции.} Пусть $P(n)$ - предикат, $a \in \mathbb{N}$. Тогда $\forall n \geq a\ P(n)$ - истина, если: 
+    \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $P(a)$ - истина (база индукции).
+        \item $\forall n \ P(n) \to P(n+1)$ (шаг индукции)
+    \end{enumerate}
+    \textbf{Неравенство Бернулли.} $\forall n \in \mathbb{N} \ \forall x \geq -1 \ : \  (1 + x)^n \geq 1 + xn$ 
+    \begin{proof}
+        \textit{База.} $n = 1$ \ : \ $(1 + x)^1 \geq 1 + x \cdot 1$ - верно. \\
+        \textit{Шаг.} Пусть для n = k выполнено. То есть:  $\forall x \geq -1 \ : \  (1+x)^k \geq 1 + xk \ \ (*)$.\\
+        Хотим проверить выполнение утверждения:  $\forall x \geq -1 \ : \  (1+x)^{k+1} \geq 1 + x \cdot (k + 1)$. \\
+        Домножим $(*)$ на $(1+x)$: \\
+        $(1+x)^{k+1} \geq (1+x) \cdot (1+xk) = 1 + x + xk + x^2k = 1 + x \cdot (k + 1) + x^2k \geq 1 + x \cdot (k + 1) $ \\
+        Получили: $(1+x)^{k+1} \geq 1 + x \cdot (k + 1)$ - что и хотели.
+        
+    \end{proof}
+
+\section{Перестановки, размещения и сочетания. Бином Ньютона.}
+    \textbf{Перестановка} - упорядоченное множество размером $n$. \\ \textit{Число перестановок:} $n!$ \\
+    \textbf{Размещение} - упорядоченное подмножество размером $k$ из множества размером $n$. \\
+    \textit{Число размещений:} $\dfrac{n!}{(n-k)!}$ \\
+    \textbf{Сочетание} - неупорядоченное подмножество размера $k$ из множества размером $n$. \\
+    \textit{Число сочетаний:} $C^n_k = \dfrac{n!}{k! \cdot (n-k)!}$ \\
+    \textbf{Бином Ньютона: } $(x + y)^n = \sum_{k=0}^n C^n_k \cdot x^k \cdot y^{n-k}$
+
+\section{Единственность предела. Ограниченные, б. м., б. б.  и отделимые от нуля.}
+    \textbf{Последовательностью} называется индексированный набор чисел $\{a_n\}_{n \in \mathbb{N}}$. \\
+    Число $a$ называется \textbf{пределом последовательности} $\{a_n\}$, если 
+    \begin{center}
+         $\forall \varepsilon  > 0 \ \exists N = N(\varepsilon), N \in \mathbb{N} \ \forall n \geq N \ |a_n - a| < \varepsilon$
+    \end{center}
+    или (запись определения через $\varepsilon$-окрестности): 
+    \begin{center}
+         $\forall U_\varepsilon(a) \ \ \exists N = N(\varepsilon), \ N \in \mathbb{N} \ \ \forall n \geq N \ : \  a_n \in  U_\varepsilon(a)$
+    \end{center}
+    \textbf{Теорема о единственности предела.} Последовательность $\{a_n\}$ может иметь только один предел.
+    \begin{proof}
+        Предположим противное. $\Rightarrow$ существует хотя бы два предела. \\ Пусть $\lim\limits_{n \to \infty} a_n = a$ и $\lim\limits_{n \to \infty} a_n = b$. Тогда по определению: \\
+        $\forall U_\varepsilon(a) \ \ \exists N = N_1(\varepsilon), \ N_1 \in \mathbb{N} \ \ \forall n \geq N_1 \ : \  a_n \in  U_\varepsilon(a) \ \ $ \  $(1)$
+        \\
+        $\forall U_\varepsilon(b) \ \ \exists N = N_2(\varepsilon), \ N_2 \in \mathbb{N} \ \ \forall n \geq N_2 \ : \  a_n \in  U_\varepsilon(b)   \ $ \ \ $(2)$ \\
+        Возьмём $\varepsilon_0 = \dfrac{|a-b|}{7}$, тогда $U_{\varepsilon_0}(a) \cap U_{\varepsilon_0}(b) = \varnothing$ \\
+        Рассмотрим член последовательности с номером $n_0 = N_1(\varepsilon) + N_2(\varepsilon)$. Так как $n_0 > N_1(\varepsilon)$ и $n_0 > N_2(\varepsilon)$, то выполнены утверждения $(1)$ и $(2) \Rightarrow \ a_{n_0}  \in U_{\varepsilon_0}(a) \cap U_{\varepsilon_0}(b) = \varnothing$ \ противоречие.
+    \end{proof}
+    \noindent Последовательность $\{a_n\}$ называется \textbf{ограниченной}, если $ \exists C \ \forall n \ : \ |a_n| \geq C$ \\
+    Последовательность $\{a_n\}$ называется \textbf{бесконечно большой} (б.б), если 
+    \begin{center}
+        $\forall M > 0 \ \exists N = N(M) \ \forall n \geq N \ : \ |a_n| > M$
+    \end{center}
+    Последовательность $\{a_n\}$ называется \textbf{бесконечно малой} (б.м.), если 
+    \begin{center}
+        $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n \geq N \ : \ |a_n| < \varepsilon$
+    \end{center}
+    Последовательность $\{a_n\}$ называется \textbf{отделённой от нуля}, если $\exists \varepsilon_0 \neq 0 \ \ \forall n \ : \ |a_n| > \varepsilon_0$.
+    \textbf{Теорема об ограниченности сходящейся последовательности.} Всякая сходящаяся последовательноcть $\{a_n\}$ ограничена.
+    \begin{proof}
+        Т. к. $\{a_n\}$ сходится, то: $\forall \varepsilon  > 0 \ \exists N = N(\varepsilon), N \in \mathbb{N} \ \forall n \geq N \ |a_n - a| < \varepsilon$ \ \ $(1)$. \\
+        Возьмём $\varepsilon = 1$ :  $\forall n > N(1) \ : \ a - 1 < a_n < a + 1 \ \Rightarrow \ \forall n > N(1) \ : \ |a_n| < max\{|a-1|; \ |a+1|\}$ \\
+        Тогда последовательность $\{a_n\}$ ограничена либо каким-то своим членом из первых $N(1)$ членов, либо max\{|a-1|; \ |a+1|\}. То есть выполнено следующее: \\ $\forall n \in N \ |a_n| < max\{|a-1|; \ |a+1|; \ |a_1|; \ |a_2|; ... \ |a_{N(1) - 1}| \} + 1$ - определение ограниченности
+    \end{proof}
+
+\section{Арифметические свойства предела последовательности.}
+\textbf{Утверждение}. $\lim\limits_{n \to \infty} a_n  = a \ \Leftrightarrow \ a_n = a + \alpha_n$, \ где $\{a_n\}$ - последовательность, $\alpha_n$ - б.м. последовательность. 
+\\
+Рассмторим две последовательности $\{a_n\}$ и $\{b_n\}$. Пусть $\lim\limits_{n \to \infty} a_n = a$ и $\lim\limits_{n \to \infty} b_n = b$. Тогда выполнены следующие свойсва: 
+\begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+    \item Предел суммы. $\lim\limits_{n \to \infty} (a_n + b_n) = a + b$.
+    \item Предел произведения. $\lim\limits_{n \to \infty} (a_n \cdot b_n) = a \cdot b$.
+    \item Предел частного. $\lim\limits_{n \to \infty} \left(\dfrac{a_n}{b_n}\right) = \dfrac{a}{b}$ \ (если дополнительно известно, что $b \neq 0$ и $\forall n \ b_n \neq 0$).
+\end{enumerate}
+\begin{proof}
+    Нам дано: \\
+    $\forall \varepsilon  > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \  |a_n - a| < \varepsilon$ \ \ $(1)$ \\
+    $\forall \varepsilon  > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n \geq N_2(\varepsilon) \ : \  |b_n - b| < \varepsilon$ \ \ $(2)$ \\
+        1. $\lim\limits_{n \to \infty} (a_n + b_n) = a + b \ \Leftrightarrow \ $  $\forall \varepsilon > 0 \ \ \exists N_3(\varepsilon) \ \ \forall n > N_3(\varepsilon) \ : \  |(a_n+b_n) - (a + b)| < \varepsilon$ \\
+        $|(a_n+b_n) - (a + b)| = |(a_n - a) + (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon$. \\
+        Неравенство $|a_n-a| < \dfrac{\varepsilon}{2}$ выполнено, начиная с $n = N_1\left(\dfrac{\varepsilon}{2}\right)$; неравенство  $|b_n-b| < \dfrac{\varepsilon}{2}$ выполнено, начиная с $n = N_2\left(\dfrac{\varepsilon}{2}\right) \ \Rightarrow \ $ нераенство $ |(a_n+b_n) - (a + b)| < \varepsilon$ выполнено начиная с $n = N_3(\varepsilon) = max\{N_1\left(\dfrac{\varepsilon}{2}\right); \ N_2\left(\dfrac{\varepsilon}{2}\right)\}$  \ ч.т.д. \\
+        2.  $\lim\limits_{n \to \infty} a_n = a \ \Leftrightarrow \ a_n = a + \alpha_n$ \ и \ $\lim\limits_{n \to \infty} b_n = b \ \Leftrightarrow \ b_n = b + \beta_n$, \ где $\alpha_n$ и $\beta_n$ - б.м. последовательности. \\
+        $\lim\limits_{n \to \infty} (a_n \cdot b_n) = \lim\limits_{n \to \infty} (a + \alpha_n) \cdot (b + \beta_n) = \lim\limits_{n \to \infty} (a \cdot b + a \cdot \beta_n + b \cdot \alpha_n + \alpha_n \cdot \beta_n) = \lim\limits_{n \to \infty} (a \cdot b) + \lim\limits_{n \to \infty} (a \cdot \beta_n) + \lim\limits_{n \to \infty} (b \cdot \alpha_n) + \lim\limits_{n \to \infty} (\alpha_n \cdot \beta_n) = a \cdot b + 0 + 0 + 0 = a \cdot b$  
+\end{proof}
+
+\section{Предельный переход в неравенствах. Теорема о зажатой последовательности.}
+\textbf{Теорема.} Если $\forall n \ c_n \geq A$ и $c_n \to c$ при $n \to \infty$, то $c \geq A$
+\begin{proof}
+    Так как $c_n$ сходится к $c$, то по определению предела: $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ : \  |c_n - c| < \varepsilon \ (*)$ (то есть $c_n \in U_\varepsilon(c))$ \\ 
+    Преподположим противное: $c < A$. Возьмём $\varepsilon_0 = \dfrac{A-c}{7}$. Так как выражение $(*)$ выполнено для любого $\varepsilon$, то оно выполнено и для $\varepsilon_0$: \ $\forall n > N(\varepsilon_0) \ c_n \in U_{\varepsilon_0}(c) \ \Rightarrow \ c_n < A$ - противорчие (по условию $\forall n \ c_n \geq A$)
+\end{proof}
+\textbf{Следствие (a.k.a. предельный переход в неравенствах).} Если $a_n \to a$ при $n \to \infty$, $b_n \to b$ при $n \to \infty$ и \ $\forall n \ a_n \leq b_n$, то $a \leq b$.
+\begin{proof}
+    Рассмотрим $c_n = b_n - a_n$. По условию $a_n \leq b_n$, значит $c_n \geq 0$. Применим для $c_n$ теорему, доказанную выше, и получим: $c \geq 0$, где $c = b - a$  - предел последовательности $c_n$ (вопользовались арифметикой предела). То есть $b - a \geq 0 \ \Leftrightarrow \ b \geq a$ 
+    
+    \textbf{Замечание.} При предельном переходе все неравенства становятся \textit{нестрогими}. 
+\end{proof}
+ 
+\textbf{Теорема о зажатой последовательности.} Пусть $\lim\limits_{n \to \infty} a_n = c$, $\lim\limits_{n \to \infty} b_n = c$ и $\forall n \ a_n \leq c_n \leq b_n$. Тогда $\exists \lim\limits_{n \to \infty} c_n = c$.
+\begin{proof}
+    По определению предела последовательности для $a_n$ и $b_n$ соответсвенно: \\
+    $\forall \varepsilon  > 0 \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1 \ \ c - \varepsilon < a_n < c + \varepsilon \ (1)$ \\
+    $\forall \varepsilon  > 0 \ \exists N_2 = N_2(\varepsilon) \ \ \forall n \geq N_2 \ \ c - \varepsilon < b_n < c + \varepsilon \ (2)$ \\
+    Положим $N_3 = max\{N_1(\varepsilon); \ N_2(\varepsilon)\}$. Тогда для $\forall n \geq N_3$ выполнена следующая цепочка неравенств: 
+    $c - \varepsilon < a_n \leq c_n \leq b_n < c + \varepsilon$ (самое левое неравенство выполнено для $n \geq N_1(\varepsilon)$, самое правое неравенство выполнено для $n \geq N_2(\varepsilon)$ : см. выражения $(1)$ и $(2)$). \\
+    То есть $\forall \varepsilon > 0 \ \exists N_3 = max\{N_1(\varepsilon); \ N_2(\varepsilon)\} \ \ \forall n \geq N_3 \ : \ |c_n - c| < \varepsilon \ \Leftrightarrow \  \lim\limits_{n \to \infty} c_n = c$
+\end{proof}
+
+\section{Верхняя и нижняя грань. Теорема о сущ. точной верхней и нижней грани.
+}
+Пусть $X$ - не пустое числовое множество. Множество $X$ - называется \textbf{ограниченным сверху} если существует такое число $a$, что $\forall x \in X \ x < a$ \\
+Пусть $X$ - не пустое числовое множество. Множество $X$ - называется \textbf{ограниченным снизу} если существует такое число $a$, что $\forall x \in X \ x > a$ \\
+Множество, ограниченное сверху и снизу называется \textbf{ограниченным}.\\
+\textbf{Аксиома непрерывности действительных чисел}. Пусть $X, Y \in \mathbb{R}$, причём $X \neq \varnothing$ и $Y \neq \varnothing$. Кроме того, пусть $\forall x \in X$ и $\forall y \in Y$ выполняется следующее неравенство: $x \leq y$. Тогда найдётся число $c \in \mathbb{R}$ такое, что $x \leq c \leq y$. \\
+\textbf{Верхней гранью множества} $A \subset \mathbb{R}$ называется число $C$, такое что: $\forall a \in A \ \ a \leq C$. \\
+\textbf{Нижней гранью множества} $A \subset \mathbb{R}$ называется число $C$, такое что: $\forall a \in A \ \ a \geq C$. \\
+\textbf{Точной верхней гранью множества} $A \  (sup A)$ называется наименьший элемент множества верхних граней $A$. \\
+\textbf{Точной нижней гранью множества} $A \  (inf A)$ называется наибольший элемент множества нижних граней $A$. \\
+\textbf{Теорема о существовании точной верхней грани.} У любого непустого, ограниченного сверху множества $A$ существует точная верхняя грань $(supA)$.
+\begin{proof}
+    Пусть $S_A$ - множество верхних граней множества $A$. Тогда выполнены следующие три условия: 
+    \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $S_A \neq \varnothing$ (так как множество $A$ ограничено сверху, то множество верхних граней множества $A$ не пусто).
+        \item $\forall a \in A \ \ \forall c \in S_A \ : \ a \leq c$ (любая верхняя грань множества $A$ не меньше любого элемента из множества $A$ )
+        \item $A \neq \varnothing$ (по условию)
+    \end{enumerate}
+    Значит можно применить аксиому непрерывности действительных чисел для множеств $A$ и $S_A$ $ \ \Rightarrow \ \exists B \ \ \forall a \in A \ \ \forall c \in S_A \ : \ a \leq B \leq c$. \ \ Разобъём это утверждение на две части: 
+    \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+        \item $\forall a \in A \ \ a \leq B \Rightarrow B$ - верхняя грань множества $A$.
+        \item $\forall c \in S_A \ \ B \leq c \Rightarrow B$ - не больше всех верхних граней множества $A$.
+    \end{enumerate} 
+    Значит $B$ - наименьшая верхняя грань множества $A \ \Rightarrow \ $ $B = supA$ \\
+    \textbf{Замечание.} Теорема о существовании точной нижней грани доказывается аналогично.
+\end{proof}
+
+\section{Теорема Вейерштрасса.}
+\textbf{Теорема Вейерштрасса.} Пусть последовательность $\{a_n\}$ не убывает (не возрастает) и ограничена сверху (снизу). Тогда $\{a_n\}$ сходится.
+\begin{proof}
+    Докажем для случая: последовательность ограничена сверху и не убывает (второй случай доказывается абсолютно аналогично). \\
+    Рассмотрим множество $A = \{a_n\}$, то есть $A$ - множество значений последовательности $\{a_n\}$. Так как $a_n$ - ограничена сверху и $A \neq \varnothing \ \Rightarrow \ \exists sup A = a$ (по теореме о существовании точной верхней грани). \\
+    Докажем, что $\lim \limits_{n \to \infty} a_n = a$. Хотим: \ 
+    $\forall \varepsilon > 0 \ \ \exists N = N(\varepsilon) \ \forall n \geq N\ : \ |a_n - a| < \varepsilon$, \ раскроем модуль, зная, что $a$ - точная верхняя грань ($\forall n \ a_n \leq a$) и получим: \\
+    $\forall \varepsilon > 0 \ \ \exists N = N(\varepsilon) \ \forall n \geq N\ : \ a - a_n < \varepsilon$ \  
+    $\Leftrightarrow \ \forall \varepsilon > 0 \ \ \exists N = N(\varepsilon) \ \forall n \geq N\ : \ a_n > a - \varepsilon$. \\ 
+    $\Leftrightarrow \  (*)$ \ $\forall \varepsilon > 0 \ \ \exists n_0 \ : \ \  a_{n_0} > a - \varepsilon$ \  \\
+    Такой равносильный переход корректен, поскольку $a_n$ - не убывающая: если выражение $(*)$ выполнено, то неверенство $a_n > a - \varepsilon$ также выполнено для $\forall n \geq n_0$ (правая часть неравенства остаётся неизменной, левая не уменьшается). \\
+    Докажем теперь от противного, что $(*)$ выполнена. Пусть $(*)$ не выполняется, тогда: \\ $\exists \varepsilon_0 > 0 \ \forall n \ : \ a_n \leq a - \varepsilon_0 \ \Rightarrow \ a - \varepsilon_0$ - верхняя грань множетсва $A$ (по определению). \\
+    Тогда $a - \varepsilon_0 \in S_A$. В то же время $a > a - \varepsilon_0$ и $a = min S_A$ (по определению точной верхней грани). То есть $a - \varepsilon_0$ - верхняя грань множества $A$, которая меньше точной верхней грани, что невозможно \ $\Rightarrow$ \ противоречие \ $\Rightarrow$ \ $(*)$ выполнена \ $\Rightarrow$ \ $\lim \limits_{n \to \infty} a_n = a$
+\end{proof}
+
+\section{Число е. Постоянная Эйлера.}
+ \textbf{Число e.} Рассмотрим последовательность $\{a_n\}$, заданную формулой $a_n = (1 + \frac 1n)^n$. Докажем, что у этой последовательности существует предел. Этот предел и называют числом $e$.
+ \begin{proof}
+     Покажем, что последовательность ограничена: 
+     \begin{spacing}{2}
+         $a_n = \left(1 + \frac1n\right)^n = \left(\frac1n + 1\right)^n 
+         = \sum_{k = 0}^n C_n^k \cdot \dfrac {1}{n^k} \cdot 1^{n - k} 
+         = 1 + C_n^1 \cdot \dfrac {1}{n} + C_n^2 \cdot \dfrac {1}{n^2} + C_n^3 \cdot \dfrac {1}{n^3} + ... + C_n^n \cdot \dfrac {1}{n^n} 
+         = \\ = 1 + \dfrac{n}{1} \cdot \dfrac{1}{n} + \dfrac{n \cdot (n - 1)}{2!} \cdot \dfrac{1}{n^2} + \dfrac{n \cdot (n - 1) \cdot (n-2)}{3!} \cdot \dfrac{1}{n^3} + ... + \dfrac{n!}{n!} \cdot \dfrac{1}{n^n}  = 
+         1 + 1 + \dfrac{1}{2!} \cdot \dfrac{n}{n} \cdot \dfrac{n - 1}{n} + \dfrac{1}{3!} \cdot \dfrac{n}{n} \cdot \dfrac{n - 1}{n} \cdot \dfrac{n - 2}{n} + ... + \dfrac{1}{n!} \cdot \dfrac{n}{n} \cdot \dfrac{n - 1}{n} \cdot \dfrac{n - 2}{n} \cdot ... \cdot \dfrac{n - (n - 1)}{n}
+         = 2 + \dfrac{1}{2!} \cdot (1 - \dfrac{1}{n}) + \dfrac{1}{3!} \cdot (1 - \dfrac{1}{n}) \cdot (1 - \dfrac{2}{n}) + \dfrac{1}{n!} \cdot (1 - \dfrac{1}{n}) \cdot (1 - \dfrac{2}{n}) \cdot ... \cdot (1 - \dfrac{n-1}{n}) 
+         \leq 2 + \dfrac{1}{2!} + \dfrac{1}{3!} + ... +  \dfrac{1}{n!} \leq 2 + \dfrac{1}{1 \cdot 2} + \dfrac{1}{2 \cdot 3} + ... + \dfrac{1}{(n-1)  \cdot n} = 2 + (1 - \dfrac{1}{2}) + (\dfrac{1}{2} - \dfrac{1}{3}) + (\dfrac{1}{3} - \dfrac{1}{4}) + ... + (\dfrac{1}{n-1} - \dfrac{1}{n}) = 3 - \dfrac{1}{n} 
+         \leq 3$
+     \end{spacing}
+     То есть $\forall n \ a_n \leq 3$ \ \Rightarrow \  $\{a_n\}$ ограничена сверху. Докажем, что $\{a_n\}$ неубывающая последовательность:
+     
+     $a_{n+1} = 2 + \dfrac{1}{2!} \cdot (1 - \dfrac{1}{n+1}) + \dfrac{1}{3!} \cdot (1 - \dfrac{1}{n+1}) \cdot (1 - \dfrac{2}{n+1}) + ... + \dfrac{1}{(n+1)!} \cdot (1 - \dfrac{1}{n+1}) \cdot (1 - \dfrac{2}{n+1}) \cdot ... \cdot (1 - \dfrac{n}{n+1}) \leq a_n + \dfrac{1}{(n+1)!} \cdot (1 - \dfrac{1}{n+1}) \cdot (1 - \dfrac{2}{n+1}) \cdot ... \cdot (1 - \dfrac{n}{n+1}) \geq a_n \ \Rightarrow \ a_{n+1} \geq a_n \\ \Rightarrow \ \{a_n\}$ не убывает. \\
+     Значит $\{a_n\}$ ограничена сверху и не убывает  \ $\Rightarrow$ \ по теореме Вейрштрасса $\{a_n\}$ имеет предел:  $\lim\limits_{n \to \infty} a_n = \lim\limits_{n \to \infty} (1 + \frac{1}{n})^n = e$.
+ \end{proof}
+
+ \textbf{Постоянная Эйлера.} Рассмотрим последовательность $\gamma_n = 1 + \dfrac12 + \dfrac13 + ... + \dfrac1n - \ln(n)$. Докажем, что $\{\gamma_n\}$ сходится к некоторому числу $\gamma$. Это число и называется постоянной Эйлера. 
+ \begin{proof}
+     Покажем, что $\{\gamma_n\}$ убывает: 
+     \begin{spacing}{2}
+         $\gamma_{n+1} - \gamma_n = \dfrac{1}{n+1} - \ln(n+1) + ln(n) = \dfrac{1}{n+1} - \ln\left(\dfrac{n+1}{n} \right) = \dfrac{1}{n+1} - \ln\left(1 +\dfrac{1}{n}\right) = \dfrac{1}{n+1} \cdot \left(1 - (n+1) \cdot \ln\left(1 +\dfrac{1}{n}\right)\right) =  \dfrac{1}{n+1} \cdot \left(1 - \ln\left(1 +\dfrac{1}{n}\right)^{n+1}\right)$ \\
+     Обозначим за $b_n$ последовательность $b_n = \left( 1 + \dfrac1n\right)^{n+1}$. Очевидно, что $\lim\limits_{n \to \infty} \left( 1 + \dfrac1n\right)^{n+1} = \lim\limits_{n \to \infty} \left( 1 + \dfrac1n\right)^{n} \cdot \lim\limits_{n \to \infty} \left( 1 + \dfrac1n\right) = e \cdot 1 = e$. Значит чтобы докать, что $\gamma_{n+1} - \gamma_n = \dfrac1{n+1} \cdot \left( 1 - \ln\left(b_n\right)\right) < 0$, нужно чтобы $b_n$ убывала. Докажем это: \\ 
+     $\dfrac{b_n}{b_{n+1}} = \dfrac{\left( 1 + \frac1n\right)^{n+1}}{\left( 1 + \frac1{n+1}\right)^{n+2}} = \dfrac{(n+1)^{n+1}}{n^{n+1}} \cdot \dfrac{\left(n+1\right)^{n+2}}{\left(n+2\right)^{n+2}} 
+     = \ \dfrac{n+1}{n+2} \cdot \left( \dfrac{\left(n+1\right)^2}{n \cdot (n+2)} \right)^{n+1} 
+     = \dfrac{n+1}{n+2} \cdot \left( \dfrac{n^2 + 2n + 1}{n^2 + 2n} \right)^{n+1} 
+     = \dfrac{n+1}{n+2} \cdot \left(1 +  \dfrac{1}{n^2 + 2n} \right)^{n+1} 
+     \geq \{$применим неравенство Бернулли$\} 
+     \geq \dfrac{n+1}{n+2} \cdot \left(1 +  \dfrac{n+1}{n^2 + 2n} \right) 
+     = \dfrac{(n+1) \cdot (n^2+3n+1)}{n^3+4n^2+4n} 
+     = \dfrac{n^3+4n^2+4n+1}{n^3+4n^2+4n} > 1 \ \Rightarrow \ b_n > b_{n+1} \ \Rightarrow \ b_n$ - убывающая $\ \Rightarrow \ \left(1 - \ln(b_n)\right) < 0 \ \Rightarrow \ \gamma_n$ - убывающая.
+     \end{spacing}
+     
+     Теперь докажем, что $\{\gamma_n\}$ ограничена снизу. Для этого докажем вспомогательное утверждение: $\forall n \ \  \ln\left(1+\frac{1}{n}\right) \leq \frac1n$. \\
+     Рассмотрим последовательность $a_n = \left(1 + \frac1n\right)^n$, как мы знаем, она возрастающая и сходится к $e$, то есть: $\forall n  \ \ \left(1+\frac{1}{n}\right)^n < e \ \Rightarrow \ \{$возьмём натуральный логарим от обеих частей$\} \ \Rightarrow \ \ln\left(1 + \frac1n\right)^n < 1 \ \Leftrightarrow \ n \cdot \ln\left(1 + \frac1n\right) < 1 \ \Leftrightarrow \  \ln\left(1 + \frac1n\right) < \dfrac{1}{n}$ \ ч.т.д. \\
+     $\gamma_n = 1 + \dfrac12 + \dfrac13 + ... + \dfrac1n - \ln(n) > \{$пользуемся доказанным выше фатком$\} >  \ln\left( \dfrac21 \right) + \ln\left( \dfrac32 \right) + \ln\left( \dfrac43 \right) + ... + \ln\left( \dfrac{n+1}n \right) - \ln(n) = (\ln(2) - \ln(1)) + (\ln(3) - \ln(2)) + (\ln(4) - \ln(3)) + ... + (\ln(n+1) - \ln(n)) - \ln(n) = \ln(n+1) - \ln(n) = \ln\left( \dfrac{n+1}{n} \right) = \ln\left( 1+ \dfrac{1}{n} \right) > 0 \ \Rightarrow \ \{\gamma_n\}$ ограничена снизу нулём.  \\
+     Значит $\{\gamma_n\}$ убывает и огрничена снизу \  $\Rightarrow$ \ по теореме Вейерштрасса $\exists \lim\limits_{n \to \infty} \{\gamma_n\} = \gamma$ - постоянная Эйлера. 
+ \end{proof}
+ 
+\section{Подпоследовательность.Предельная точка.Теорема Больцано-Вейерштрасса.}
+\textbf{Подпоследовательность} последовательности $\{x_n\}$ - это последовательность $\{x_{n_k}\} = \{x_{n_1}, x_{n_2}, ..., x_{n_k}\}$, полученная из $\{x_n\}$ удалением ряда её членов без изменения порядка следования членов. \\
+\textbf{Предельной точкой} последовательности $\{a_n\}$ называется число $a$, такое что в любой окрестности точки $a$ находится бесконечное число членов последовательности $\{a_n\}$. \\
+\textbf{Теорема Больцано-Вейерштрасса.} Из любой ограниченной последовательности $\{a_n\}$ можно выделить сходящуюся подпоследовательность  $\{a_{n_k}\}$.
+\begin{proof}
+    Так как  $\{a_n\}$ ограничена, то $\exists c \ \forall n \ : \ |a_n| < c$. \\
+    Рассмотрим отрезок $I_1 = [-c; \ c]$, причём $\forall n \ a_n \in I_1$. Возьмём в качестве $n_1 = 1$. Разделим $I_1$ пополам (на 2 отрезка). В какой-то половине находится бесконечное число членов, возьмём эту половину и обзначим за $I_2$. В $I_2$ возьмём член $a_{n_2}$, $n_2 > n_1$. ... $I_k$ разделим на два отрезка пополам, выберем половинку, где бесконечное число членов, её называем $I_{k+1}$ и в ней выберем $a_{n_{k+1}}$ : $n_{k+1} > n_k$. \\
+    Построим последовательность $\{I_k\}_{k \in \mathbb{N}}$, где $I_k = [b_k; \ d_k]$. В силу построения $I_{k+1} \subset I_k$. \\ 
+    Рассмотрим последовательность левых концов отрезков $I_k$ $\{b_k\}$: $\{b_k\}$ не убывает и ограничена сверху $c \ \Rightarrow \ $ По теореме Вейерштрасса $\exists \lim\limits_{k \to \infty} b_k = b$. \\
+    Рассмотрим последовательность правых концов отрезков $I_k$ $\{d_k\}$: $\{d_k\}$ не возрастает и ограничена снизу $c \ \Rightarrow \ $ По теореме Вейерштрасса $\exists \lim\limits_{k \to \infty} d_k = d$. \\
+    Рассмотрим длину отрезка $I_k$. Поскольку длина самого первого отрезка  $2c$ и мы $k-1$ раз раздедли отрезок пополам, то длина $I_k$ равна:  $|d_k - b_k| = \dfrac{2c}{2^{k-1}}  \to 0 $ при $k \to \infty \ \Rightarrow \ d = b$. \\
+    Возьмём $a = b = d$. Рассмотрим последовательность $a_{n_k} \in I_k = [b_k; \ d_k] \ \Rightarrow \ b_k \leq a_{n_k} \leq d_k$. \\
+    По теореме о зажатой последовательности $\lim\limits_{n_k \to \infty} a_{n_k} = a$ ($b_k$ и $d_k$ сходятся к $a$). \ $\Rightarrow$ \ 
+    $a_{n_k}$ - сходяшаяся подпоследовательность.
+\end{proof}
+
+\section{Частичный, верхний и нижний предел. Их эквивалентность.}
+\textbf{Частичным пределом} последовательности $\{a_n\}_{n \in \mathbb{N}}$ называется предел подпоследовательности $\{a_{n_k}\}_{k \in \mathbb{N}}$. \\ 
+\textbf{Нижний предел последовательности}: $\underline{\lim_{\limits_{k \to \infty}}} a_k = \lim\limits_{n \to \infty} \inf\limits_{k \geq n} a_k$. \\
+\textbf{Верхний предел последовательности}: $\overline{\lim_{\limits_{k \to \infty}}} a_k = \lim\limits_{n \to \infty} \sup\limits_{k \geq n} a_k$. \\
+\textbf{Замечание.} Пусть $b_k = \sup\limits_{n \geq k} \{a_n\}$. Тогда \ $\overline{\lim_{\limits_{k \to \infty}}} a_k \ \left(  \underline{\lim_{\limits_{k \to \infty}}} a_k\right)$ всегда существуют в одном из следующих смыслов: 
+\begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
+    \item $b_k$ ограничена \ $\Rightarrow \ $ существует конечный  $\lim\limits_{k \to \infty} b_k = \overline{\lim_{\limits_{n \to \infty}}} a_n$
+    \item $b_k$ не ограничена \ $\Rightarrow \  \exists \lim\limits_{k \to \infty} b_k = -\infty $ 
+    \item $b_k$ не определена \ $\Rightarrow \ $ зададим $\overline{\lim_{\limits_{n \to \infty}}} a_n = + \infty$
+\end{enumerate}
+\textbf{Теорема об эквивалентности понятий предельной точки и частичного предела.} Рассмотрим последовательность $\{a_n\}$. Число $a$ является предельной точкой последовательности 
+ \ $\Leftrightarrow$ \ $a$ - частичный предел этой  последовательности. 
+\begin{proof}
+    Докажем сначала, что если $a$ - частичный предел, то $a$ - предельная точка. По определению частичного предела: $\exists \{n_k\} \ : \lim\limits_{k \to \infty} a_{n_k} = a \ \Leftrightarrow \ \forall \varepsilon > 0 \ \ \exists N = N(\varepsilon) \ \ \forall k \geq N \ : \ |a_{n_k} - a| < \varepsilon$. \ То есть в $\varepsilon$-окрестности точки $a$ расположена бесконечное количество членов последовательности $a_{n}$ (т.к. члены подпоследовательности $a_{n_k}$ являются членами последовательности $a_n$) \ $\Rightarrow$ \ $a$ - предельная точка. \\
+    Теперь докажем в обратную сторону. Пусть $a$ - предельная точка. Рассмотрим последовательность $\{\varepsilon_k\}$, заданную формулой: $\varepsilon_k = \dfrac1k$. \\
+    $\varepsilon_1 = 1 \ $ В окрестности $ U_1(a)$ находится бесконечное число членов последовательности $\{a_n\}$. Выберем из этой окрестности какое-то $a_{n_1}$. \\
+    $\varepsilon_2 = \dfrac12 \ $ В окрестности $ U_2(a)$ находится бесконечное число членов последовательности $\{a_n\}$. Выберем из этой окрестности какое-то $a_{n_2}$, такое что $n_2 > n_1 \ \Rightarrow \ a_{n_2} \in U_{\frac12}$ \\
+    <...> \\
+    $\varepsilon_k = \dfrac1k \ $ В окрестности $ U_{\frac1k}(a)$ находится бесконечное число членов последовательности $\{a_n\}$. Выберем из этой окрестности какое-то $a_{n_k}$, такое что $n_k > n_{k-1} \ \Rightarrow \ a_{n_k} \in U_{\frac1k}$. \\
+    $\Rightarrow \ a - \dfrac1k < a_{n_k} < a + \dfrac1k$. Причём $\lim\limits_{k \to \infty} \left(a + \dfrac1k \right) = a$ \ и \  $\lim\limits_{k \to \infty} \left(a - \dfrac1k\right) = a$ \ $\Rightarrow$ \ по теореме о зажатой последовательности $\exists \lim\limits_{k \to \infty} a_{n_k} = a$. \ А посольку $\{a_{n_k}\}$ - подпоследовательность $\{a_n\}$, то $a$ - частичный предел последовательности $\{a_n\}$. 
+\end{proof}
+
+\section{Фундаментальные последовательности. Критерий Коши.}
+Последовательность $\{a_n\}$ называется \textbf{фундаментальной}, если:
+\begin{center}
+    $\forall \varepsilon > 0 \ \ \exists N = N(\varepsilon)  \ \ \forall n, m \geq N(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$ 
+\end{center}
+\textbf{Критерий Коши.} Последовательность $\{a_n\}$ сходится \ $\Leftrightarrow$ \  $\{a_n\}$ фундаментальная.
+\begin{proof}
+    Сначала докажем, что если $\{a_n\}$ сходится, то она фундаментальная. По определению сходимости последовательности: $\forall \varepsilon > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \ |a_n - a| < \varepsilon \ (1)$. \\
+    Хотим: $\forall \varepsilon > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n, m \geq N_2(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$. \\
+    $|a_n - a_m| = |(a_n - a) - (a_m - a_n)| \leq |a_n - a| + |a_m - a|$. \\ Согласно $(1)$ неравенство $|a_n - a| < \dfrac{\varepsilon}{2}$ \ и неравенство $|a_m - a| < \dfrac{\varepsilon}{2}$\ выполнены начиная с номера $N_1\left(\dfrac{\varepsilon}{2}\right)$ \ $\Rightarrow$ \ $N_2(\varepsilon) = N_1\left(\dfrac{\varepsilon}{2}\right)$  \ $\Rightarrow$ \ $\{a_n\}$ фундаментальная\\
+    Теперь докажем в обратную сторону. Пусть $\{a_n\}$ фундаментальная. То есть выполнено следующее условие: $\forall \varepsilon > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n, m \geq N_2(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$. \\
+    Возьмём $\varepsilon = 1 \ : \forall n > N_2(1) \ : \ |a_n - a_{N_2(1)+1}| < 1$ (член $a_{N_2(1)+1}$ мы зафиксировали:\ $N_2(1)+1$ - конкретный номер члена последовательности). \ $\Rightarrow$ \ $a_{N_2(1)+1} - 1 < a_n < a_{N_2(1)+1} + 1$. \\
+    Положим $C = max\{|a_1|; \ |a_2|; \ ...; |a_{N_2(1)+1}| + 1 \}$. Значит $\forall n \ : \ |a_n| \leq C$ \ $\Rightarrow$ \ $\{a_n\}$ ограничена.\\
+    По теореме Больцано-Вейерштрасса: \ $\exists \{n_k\} \ : \ a_{n_k} \to a$ при $n \to \infty$ \ $\Leftrightarrow$ \\ $\Leftrightarrow$ \ $\forall \varepsilon > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \ |a_n - a| < \varepsilon$. \\
+    Докажем, что предел $\{a_n\}$ тоже равен $a$ : 
+    $\forall \varepsilon > 0 \ \ \exists N_3 = N_3(\varepsilon) \ \ \forall n > N_3(\varepsilon) \ : \ |a_n - a| < \varepsilon$. \\
+    $|a_n - a| = |(a_n - a_{n_k}) + (a_{n_k} - a)| \leq |a_n - a_{n_k}| + |a_{n_k} - a| < \varepsilon$ \\
+    Неравенство $|a_n - a_{n_k}| < \dfrac{\varepsilon}{2}$ выполнено начиная с $N_2\left(\dfrac{\varepsilon}{2}\right)$ (по фундаментальности $a_n$) \\
+    Неравенство $|a_{n_k} - a| < \dfrac{\varepsilon}{2}$ выполнечно начиная с $N_1\left(\dfrac{\varepsilon}{2}\right)$ (по сходимости $a_{n_k}$). \\
+    Значит неравенство $|a_n - a_{n_k}| + |a_{n_k} - a| < \varepsilon$ выполнено начиная с $N_3 = max\{N_1\left(\dfrac{\varepsilon}{2}\right); \ N_2\left(\dfrac{\varepsilon}{2}\right)\}$ \ $\Rightarrow$ \ $\{a_n\}$ сходится.
+\end{proof}
+
+\end{document}
