@@ -26,7 +26,7 @@
 
 \title{Коллоквиум по математичекому анализу, осень 2024}
 \author{Агаркова Полина, ассистент 241}
-\date{Версия 1.0}
+\date{Версия 2.0}
 
 \begin{document}
 
@@ -48,13 +48,12 @@
     \item Ограниченные подмножества действительных чисел. Аксиома непрерывности действительных чисел. Верхняя и нижняя грань. Точная верхняя и точная нижняя грань. Теорема о существовании точной верхней и нижней грани.
     \item Теорема Вейерштрасса.
     \item Число е. Постоянная Эйлера.
-    \item Подпоследовательность. Предельная точка последовательности. Теорема Больцано-Вейерштрасса.
+    \item Подпоследовательность. Предельная точка. Теорема Больцано-Вейерштрасса.
     \item Частичный предел. Верхний и нижний предел. Эквивалентность понятий частичного предела и предельной точки.
     \item Фундаментальные последовательности. Критерий Коши.
-    \item Предел функции в точке и на бесконечности: определения по Коши и по Гейне. Эквивалентность двух определений. Односторонние пределы. Бесконечный предел.
-    \item Арифметика предела функции. Предельный переход в неравенствах. Теорема о зажатой функции. 
-    \item (?) Асимптоты и их вычисление. 
-    \item (?) Теорема о пределе сложной функции.
+    \item Предел функции в точке: определения по Коши и по Гейне. Эквивалентность двух определений. Арифметика предела функции. Теорема о зажатой функции. 
+    \item Сходимость стандартных последовательностей.
+
 \end{enumerate}
 
 \newpage
@@ -129,7 +128,7 @@
         Возьмём $\varepsilon_0 = \dfrac{|a-b|}{7}$, тогда $U_{\varepsilon_0}(a) \cap U_{\varepsilon_0}(b) = \varnothing$ \\
         Рассмотрим член последовательности с номером $n_0 = N_1(\varepsilon) + N_2(\varepsilon)$. Так как $n_0 > N_1(\varepsilon)$ и $n_0 > N_2(\varepsilon)$, то выполнены утверждения $(1)$ и $(2) \Rightarrow \ a_{n_0}  \in U_{\varepsilon_0}(a) \cap U_{\varepsilon_0}(b) = \varnothing$ \ противоречие.
     \end{proof}
-    \noindent Последовательность $\{a_n\}$ называется \textbf{ограниченной}, если $ \exists C \ \forall n \ : \ |a_n| \geq C$ \\
+    \noindent Последовательность $\{a_n\}$ называется \textbf{ограниченной}, если $ \exists C \ \forall n \ : \ |a_n| \leq C$ \\
     Последовательность $\{a_n\}$ называется \textbf{бесконечно большой} (б.б), если 
     \begin{center}
         $\forall M > 0 \ \exists N = N(M) \ \forall n \geq N \ : \ |a_n| > M$
@@ -148,12 +147,17 @@
 
 \section{Арифметические свойства предела последовательности.}
 \textbf{Утверждение}. $\lim\limits_{n \to \infty} a_n  = a \ \Leftrightarrow \ a_n = a + \alpha_n$, \ где $\{a_n\}$ - последовательность, $\alpha_n$ - б.м. последовательность. 
-\\
+\begin{proof}
+    $\lim\limits_{n \to \infty} a_n  = a \ \Leftrightarrow \ \forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon): \ |a_n - a| < \varepsilon$. \\
+    $\{\alpha_n\}$ - б.м. $\Leftrightarrow$ \ $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon): \ |\alpha_n| < \varepsilon$, где $\alpha_n = a_n - a$. \\
+    Доказательсво "греческое": смотри!
+\end{proof}
 Рассмторим две последовательности $\{a_n\}$ и $\{b_n\}$. Пусть $\lim\limits_{n \to \infty} a_n = a$ и $\lim\limits_{n \to \infty} b_n = b$. Тогда выполнены следующие свойсва: 
 \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
     \item Предел суммы. $\lim\limits_{n \to \infty} (a_n + b_n) = a + b$.
     \item Предел произведения. $\lim\limits_{n \to \infty} (a_n \cdot b_n) = a \cdot b$.
-    \item Предел частного. $\lim\limits_{n \to \infty} \left(\dfrac{a_n}{b_n}\right) = \dfrac{a}{b}$ \ (если дополнительно известно, что $b \neq 0$ и $\forall n \ b_n \neq 0$).
+    \item Предел частного. $\lim\limits_{n \to \infty} \left(\dfrac{a_n}{b_n}\right) = \dfrac{a}{b}$, \ если дополнительно известно, что $b \neq 0$ и $\forall n \ b_n \neq 0$.
+    \item $\lim\limits_{n\to\infty}\sqrt{a_n} = \sqrt{a}$, если дополнительно известно, что $a_n, a > 0$
 \end{enumerate}
 \begin{proof}
     Нам дано: \\
@@ -163,7 +167,9 @@
         $|(a_n+b_n) - (a + b)| = |(a_n - a) + (b_n - b)| \leq |a_n - a| + |b_n - b| < \varepsilon$. \\
         Неравенство $|a_n-a| < \dfrac{\varepsilon}{2}$ выполнено, начиная с $n = N_1\left(\dfrac{\varepsilon}{2}\right)$; неравенство  $|b_n-b| < \dfrac{\varepsilon}{2}$ выполнено, начиная с $n = N_2\left(\dfrac{\varepsilon}{2}\right) \ \Rightarrow \ $ нераенство $ |(a_n+b_n) - (a + b)| < \varepsilon$ выполнено начиная с $n = N_3(\varepsilon) = max\{N_1\left(\dfrac{\varepsilon}{2}\right); \ N_2\left(\dfrac{\varepsilon}{2}\right)\}$  \ ч.т.д. \\
         2.  $\lim\limits_{n \to \infty} a_n = a \ \Leftrightarrow \ a_n = a + \alpha_n$ \ и \ $\lim\limits_{n \to \infty} b_n = b \ \Leftrightarrow \ b_n = b + \beta_n$, \ где $\alpha_n$ и $\beta_n$ - б.м. последовательности. \\
-        $\lim\limits_{n \to \infty} (a_n \cdot b_n) = \lim\limits_{n \to \infty} (a + \alpha_n) \cdot (b + \beta_n) = \lim\limits_{n \to \infty} (a \cdot b + a \cdot \beta_n + b \cdot \alpha_n + \alpha_n \cdot \beta_n) = \lim\limits_{n \to \infty} (a \cdot b) + \lim\limits_{n \to \infty} (a \cdot \beta_n) + \lim\limits_{n \to \infty} (b \cdot \alpha_n) + \lim\limits_{n \to \infty} (\alpha_n \cdot \beta_n) = a \cdot b + 0 + 0 + 0 = a \cdot b$  
+        $\lim\limits_{n \to \infty} (a_n \cdot b_n) = \lim\limits_{n \to \infty} (a + \alpha_n) \cdot (b + \beta_n) = \lim\limits_{n \to \infty} (a \cdot b + a \cdot \beta_n + b \cdot \alpha_n + \alpha_n \cdot \beta_n) = \lim\limits_{n \to \infty} (a \cdot b) + \lim\limits_{n \to \infty} (a \cdot \beta_n) + \lim\limits_{n \to \infty} (b \cdot \alpha_n) + \lim\limits_{n \to \infty} (\alpha_n \cdot \beta_n) = a \cdot b + 0 + 0 + 0 = a \cdot b$  \\
+        3. Хотим доказать, что $\dfrac{a_n}{b_n} - \dfrac{a}{b}$ - бесконечно малая. Начнём: \\
+        $\dfrac{a_n}{b_n} - \dfrac{a}{b} = \dfrac{a + \alpha_n}{b + \beta_n} - \dfrac{a}{b} = \dfrac{(a\cdot b + b \cdot \alpha_n) - (a \cdot b + a \cdot \beta_n)}{b \cdot (b + \beta_n)} = \dfrac{1}{b} \cdot \dfrac{1}{b - \beta_n} \cdot (b\cdot \alpha_n - a\cdot \beta_n)$. Понятно, что $b\cdot \alpha_n - a\cdot \beta_n$ - бесконечно малая, так как это сумма б.м (б.м. $\cdot$ огр. = б.м.). А $\dfrac1b \cdot \dfrac{1}{b - \beta_n}$ - ограниченная, так как (1 / огр. = огр. и $b \neq 0$). 
 \end{proof}
 
 \section{Предельный переход в неравенствах. Теорема о зажатой последовательности.}
@@ -272,8 +278,9 @@
      $\gamma_n = 1 + \dfrac12 + \dfrac13 + ... + \dfrac1n - \ln(n) > \{$пользуемся доказанным выше фатком$\} >  \ln\left( \dfrac21 \right) + \ln\left( \dfrac32 \right) + \ln\left( \dfrac43 \right) + ... + \ln\left( \dfrac{n+1}n \right) - \ln(n) = (\ln(2) - \ln(1)) + (\ln(3) - \ln(2)) + (\ln(4) - \ln(3)) + ... + (\ln(n+1) - \ln(n)) - \ln(n) = \ln(n+1) - \ln(n) = \ln\left( \dfrac{n+1}{n} \right) = \ln\left( 1+ \dfrac{1}{n} \right) > 0 \ \Rightarrow \ \{\gamma_n\}$ ограничена снизу нулём.  \\
      Значит $\{\gamma_n\}$ убывает и огрничена снизу \  $\Rightarrow$ \ по теореме Вейерштрасса $\exists \lim\limits_{n \to \infty} \{\gamma_n\} = \gamma$ - постоянная Эйлера. 
  \end{proof}
- 
-\section{Подпоследовательность.Предельная точка.Теорема Больцано-Вейерштрасса.}
+
+\sloppy
+\section{Подпоследовательность. Предельная точка. Теорема Больцано-Вейерштрасса.}
 \textbf{Подпоследовательность} последовательности $\{x_n\}$ - это последовательность $\{x_{n_k}\} = \{x_{n_1}, x_{n_2}, ..., x_{n_k}\}$, полученная из $\{x_n\}$ удалением ряда её членов без изменения порядка следования членов. \\
 \textbf{Предельной точкой} последовательности $\{a_n\}$ называется число $a$, такое что в любой окрестности точки $a$ находится бесконечное число членов последовательности $\{a_n\}$. \\
 \textbf{Теорема Больцано-Вейерштрасса.} Из любой ограниченной последовательности $\{a_n\}$ можно выделить сходящуюся подпоследовательность  $\{a_{n_k}\}$.
@@ -332,5 +339,105 @@
     Неравенство $|a_{n_k} - a| < \dfrac{\varepsilon}{2}$ выполнечно начиная с $N_1\left(\dfrac{\varepsilon}{2}\right)$ (по сходимости $a_{n_k}$). \\
     Значит неравенство $|a_n - a_{n_k}| + |a_{n_k} - a| < \varepsilon$ выполнено начиная с $N_3 = max\{N_1\left(\dfrac{\varepsilon}{2}\right); \ N_2\left(\dfrac{\varepsilon}{2}\right)\}$ \ $\Rightarrow$ \ $\{a_n\}$ сходится.
 \end{proof}
+
+\section{Предел функции в точке по Коши и по Гейне. Арифметика предела.}
+\textbf{Опредление предела функции по Коши}. Число $A$ называется пределом функции $f(x)$ в точке $a$: $\lim\limits_{x \to a} f(x) = A$, если: \\
+$\forall \varepsilon > 0 \ \exists \delta > 0\ \forall x \ : \ x \in \mathring{U_\delta}(a) \Rightarrow |f(x) - A| < \varepsilon$ \\
+\textit{или} \\
+\textbf{Определение предела функции по Коши}. Число $A$ называется пределом функции $f(x)$ в точке $a$: $\lim\limits_{x \to a} f(x) = A$, если: \\
+$\forall \varepsilon > 0 \ \exists \delta > 0\ \forall x \ : \ 0 < |x - a| < \delta \Rightarrow |f(x) - A| < \varepsilon$ \\
+\textbf{Определение предела функции по Гейне}.  Число $A$ называется пределом функции $f(x)$ в точке $a$: $\lim\limits_{x \to a} f(x) = A$, если: \\
+$\forall {x_n}: x_n \xrightarrow[n \to \infty]{} a \ ,x_n \neq a$ (т.е. $\lim\limits_{n \to \infty} x_n = a$) соответсвует последовательность значений функции f(x): $f(x_n) \xrightarrow[n \to \infty]{}A$ \\
+\textbf{Теорема об эквивалентности определений Коши и Гейне.} $A$ - предел функции $f(x)$ в точке $x_0$ по Коши$ \Leftrightarrow$ $A$ - предел функции $f(x)$ в точке $x_0$ по Гейне
+\begin{proof}
+    Сначала докажем, что из определения по Коши следует определение по Гейне. Имеем: 
+    \begin{equation}
+        \forall \varepsilon > 0 \ \exists \delta = \delta(\varepsilon) : \forall x \in \mathring{U_\delta}(x_0) \Rightarrow |f(x) - A| < \varepsilon
+    \end{equation}
+    Рассмотрим произвольную последовательность $x_n$, такую что:  $x_n \xrightarrow[n \to \infty]{} x_0$, причём $\forall x_n \in E$ и $x_n \neq x_0$, где $E$ - область определения функции $f(x)$. Тогда $\forall \varepsilon > 0 \ \exists \ n_0 \ \forall n \geq n_0 \ :x_n \in \mathring{U_\delta}(x_0)$. Так как $x_n$ лежит в $\delta$-окрестности точки $x_0$, то выполнено $(1)$ и $|f(x) < A| < \varepsilon$. А значит: $\forall \varepsilon > 0 \ \forall n \geq n_0 : |f(x_n) - A| < \varepsilon \ \Leftrightarrow \ \lim\limits_{n \to \infty} f(x_n) = A $ \\
+    Теперь докажем в обратную сторону: из определения по Гейне следует определение по Коши. Имеем:
+    \begin{equation}
+        \forall {x_n}: x_n \xrightarrow[n \to \infty]{} a \ ,x_n \neq a \ : \ f(x_n) \xrightarrow[n \to \infty]{}A
+    \end{equation}
+    Предположиим противное: определение по Коши не выполенено. То есть: \\
+    $\exists \varepsilon_0 > 0 \ \forall \delta > 0 \ \exists x \in \mathring{U_\delta}(x_0), \ x \in E \ : \ |f(x_n) - A| \geq \varepsilon_0$ \\
+    Возьмём последовательность $\delta_n = \dfrac1n$: $\exists x_n \in E \ x_n \in \mathring{U_{\delta_n}}(x_0): \ |f(x_n) - A| \geq \varepsilon_0$. \\
+    Заметим, что последовательность $x_n$ удовлетворяет условию $x_n \neq x_0$, поскольку $x_n$ лежит в \textit{проколотой} окрестности точки $x_0$ ($x_n \in \mathring{U_{\delta_n}}(x_0)$). Кроме того $x_0 - \delta_n < x_n < x_0 + \delta_n$, а поскольку $\lim\limits_{n \to \infty} \delta_n = 0$, то $\lim\limits_{n \to \infty} x_n = x_0$ (по теореме о зажатой последовательности). Получается, что существует такая последовательность $\{x_n\}$, что $\lim\limits_{n \to \infty} f(x_n) \neq A$, так как выполнено следующее выражение: $\forall n \in \mathbb{N} \ : \  |f(x_n) - A| \geq \varepsilon_0 \ \Rightarrow \ $ противорчение с определением по Гейне $(2)$ $\Rightarrow \ $ определение по Коши выполнено.
+\end{proof}
+\textbf{Арифметические свойства предела фуекции.} Пусть $\lim\limits_{x \to x_0} f(x) = A$ и $\lim\limits_{x \to x_0} g(x) = B$, $A, B \in \mathbb{R}$.
+\begin{enumerate}
+    \item $\lim\limits_{x \to x_0} (f(x) + g(x)) = A + B$
+    \item $\lim\limits_{x \to x_0} (f(x) \cdot g(x)) = A \cdot B$
+    \item $\lim\limits_{x \to x_0} \dfrac{f(x)}{g(x))} = \dfrac AB$, при $B \neq 0$ и $g(x) \neq 0$.
+\end{enumerate}
+Докажем певрое утверждение, остальные доказываются аналогично.
+\begin{proof}
+    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} f_(x_n) = A$ и $\lim\limits_{n \to \infty} g_(x_n) = B$. Тогда по теореме о пределе суммы для последовательностей: $\lim\limits_{n \to \infty} \left(f(x_n) + g(x_n)\right) = A + B$. В силу произвольности $x_n$ это означает, что $\lim\limits_{x \to x_0} \left(f(x) + g(x) \right) = A + B$.
+\end{proof}
+\textbf{Предельный переход в неравенствах.} Пусть $\lim\limits_{x \to x_0} f(x) = A$ и $\lim\limits_{x \to x_0} g(x) = B$, причём $A, B \in \mathbb{R}$. Если в некоторой прооколотой $\varepsilon$-окрестности точки $x_0$ выпонено неравенство $f(x) \leq g(x)$, то $A \leq B$. 
+\begin{proof}
+    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} f_(x_n) = A$ и $\lim\limits_{n \to \infty} g_(x_n) = B$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : f(x_n) \leq g(x_n) $  Тогда по предельному переходу для последовательностей: $A \leq B$.
+\end{proof}
+\textbf{Теорема о зажатой функции.} Рассмотрим три функции: $f(x), g(x), h(x)$. Пусть в некоторой $\varepsilon$-оккрестности точки $x_0$ выполнено следующее неравенство: $h(x) \leq f(x) \leq g(x)$. Причём $\lim\limits_{x \to x_0} h(x) = \lim\limits_{x \to x_0} g(x) = A$. Тогда $\exists\lim\limits_{x \to x_0} f(x) = A$.
+\begin{proof}
+    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} g_(x_n) = A$ и $\lim\limits_{n \to \infty} h_(x_n) = A$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : h(x_n) \leq f(x_n) \leq g(x_n) $  Тогда по теореме о зажатой последовательности: $\exists \lim\limits_{n \to \infty} f(x_n) = A$. В силу произвольности $x_n$: $\exists \lim\limits_{x \to x_0} f(x) = A$
+\end{proof}
+
+\section{Сходимость стандартных последовательностей.
+}
+
+\boxed{1} $\lim\limits_{n \to \infty} q^n = A$. \\
+\textbf{1.1} $q = 0$, тогда очевидно $A = 0$. \\
+\textbf{1.2} $q = 1$, тогда очевидно $A = 1$. \\
+\textbf{1.3} $q = -1$, тогда $a_n = (-1)^n$ расходится. \\
+\textbf{1.4} $q > 1$, тогда $A = +\infty$
+    \begin{proof}
+        Хотим: $\forall M>0 \ \exists N = N(M) \ \forall n \geq N(M) : \ q^n > M$. Обозначим за $x$: $x = q-1$, причём $x > 0$. То есть хоти доказать: \\
+        $q^n = (1 + (q-1))^n = (1 + x)^n > M$. Примени неравенство Берунулли, так как $x > -1$: \\
+        $(1 + x)^n > 1 + xn > M$. А это выполнено при $n > \dfrac{M-1}{x} = \dfrac{M-1}{q-1}$. Значит в качестве $N(M)$ можем взять,например, $N(M) = \left[\dfrac{M}{q-1}\right] + 241$
+    \end{proof}
+\noindent \textbf{1.5} $0 < q < 1$. Тогда нашу последовательность $a_n$ можем представить в виде: $a_n = q^n = \dfrac{1}{\left(\frac{1}{q}\right)^n}$. Понятно, что $\dfrac1q > 1$, значит $\left(\dfrac1q\right)^n$ - бесконечно большая последовательность (доказано в 4-м случае). Значит $a_n$ - обратная к б.б. последовательности $\Rightarrow$ $a_n$ - б.м. последовательность $\ \Rightarrow \ $ $A = 0$ \\
+\textbf{1.6} $-1 < q < 0$. Тогда $q^n = (-1)^n \cdot (|q|)^n$. Последовательность $(-1)^n$ - ограниченная, а $(|q|)^n$ - бесконечно малая (доказано в 5-м случае). А произведение ограниченной и бесконечно малой - бесконечно малая $ \ \Rightarrow \ A = 0 $ \\
+\textbf{1.7} $q < -1$. $q^n = (-1)^n \cdot |q|^n$. Мы знаем, что $|q|^n \xrightarrow[n \to \infty]{} +\infty$, значит  $ (-1)^n \cdot |q|^n$ стремится просто к $\infty$. $A = \infty$.
+
+\boxed{2} $\lim\limits_{n \to \infty} \sqrt[n]{a} = A, \ a > 0$
+\textbf{2.1} $a = 1$, очевидно, что $A = 1$. \\
+\textbf{2.2} $a > 1$, тогда $A = 1$.
+\begin{proof}
+    Хотим: $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon) : \ |\sqrt[n]{a} - 1| < \varepsilon$. Понятно, что $\sqrt[n]{a} - 1 > 0$, тогда можем раскрыть модуль: $\sqrt[n]{a} - 1 < \varepsilon \ \Leftrightarrow \ \sqrt[n]{a} < \varepsilon + 1$. Так как обе части неравенства неотрицательные, можем возвести в степень $n$: $a < \left(\varepsilon + 1\right)^n$. Применим нервенство Бернулли: $\left(\varepsilon + 1\right)^n > 1 + \varepsilon n > a$ (мы уменьшили левую часть неравенства, поэтому сейчас доказываем более строгое утверждение). Тогда в качестве $N(\varepsilon)$ можем взять: $N(\varepsilon) = \left[\dfrac{a - 1}{\varepsilon}\right] + 241$. 
+\end{proof}
+\textbf{2.2} $0 < a < 1$, тогда $A = 1$. 
+\begin{proof}
+    Запишем нашу последовательность в виде: $\sqrt[n]{a} = \dfrac{1}{\sqrt[n]{\frac1a}}$, причём $\dfrac1a > 1$. Значит $\sqrt[n]{\dfrac1a}\xrightarrow[n \to \infty]{} 1$ (доказали в пункте 2.1). По арифметике предела получаем, что $\lim\limits_{n \to \infty} \sqrt[n]{a} = \dfrac11 = 1$
+\end{proof}
+
+\boxed{3} $\lim\limits_{n \to \infty} \sqrt[n]{n} = 1$
+\begin{proof}
+    Хотим: $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon): \ |\sqrt[n]{n} - 1| < \varepsilon$ можем снять модуль $\sqrt[n]{n} - 1 < \varepsilon$. Перенесём единицу в правую часть и возведём в степент $n$: $n < (\varepsilon + 1)^n$. Распишем $(\varepsilon + 1)^n$ по биному Ньютона: $(\varepsilon + 1)^n = \sum\limits_{k = 0}^{n}C_n^k\cdot\varepsilon^k\cdot1^{n-k} = \sum\limits_{k = 0}^{n}C_n^k\cdot\varepsilon^k$. Понятно, что каждое слагаемое из этой суммы положительное, значит каждое наше слагаемое меньше, чем сама сумма, то есть $(\varepsilon + 1)^n$. Оставим из этой суммы только одно слагаемое при $k = 2$: $\sum\limits_{k = 0}^{n}C_n^k\cdot\varepsilon^k\cdot1^{n-k} = \sum\limits_{k = 0}^{n}C_n^k\cdot\varepsilon^k > \dfrac{n(n-1)}{2!}\cdot \varepsilon^2$. Проверим выполнение неравенства: \\
+    $n < \dfrac{n(n-1)}{2}\cdot \varepsilon^2 \ \Leftrightarrow \ 1 < \dfrac{n - 1}{2}\cdot\varepsilon^2 \ \Leftrightarrow \ n > \dfrac{2}{\varepsilon^2} + 1$.\\ В качестве $N(\varepsilon)$ можем взять: $N(\varepsilon) = \left[\dfrac{2}{\varepsilon^2} + 1\right] + 241$.
+\end{proof}
+
+\boxed{4} $\lim\limits_{n \to \infty} \dfrac{n^2}{2^n} = 0$.
+\begin{proof}
+    Будем доказывать по теореме о зажатой последовательности. Понятно, что $0 <  \dfrac{n^2}{2^n}$. Теперь сделаем оценку сверху. Чтобы увеличить чило, нужно уменьшить знаменатель. Распишем знаменатель: $2^n = (1 + 1)^n = \sum\limits_{k = 0}^{n}C_n^k\cdot1^k\cdot1^{n-k} = \sum\limits_{k = 0}^{n}C_n^k > C_n^3 = \dfrac{n!}{(n-3)!3! } = \dfrac{n(n-1)(n-2)}{6}$ (взяли только одно слагаемое при $k = 3$, аналогчно предыдщему пункту). \\ Тогда: \\
+    $0 < \dfrac{n^2}{2^n} = \dfrac{n^2}{(1+1)^n} < \dfrac{n^2 \cdot 3!}{n(n-1)(n-2)} \xrightarrow[n \to \infty]{} 0$ (в числителе многочлен второй степени, в знаменетеле многочлен от $n$ третьей степени) $\Rightarrow$ по теореме о зажатой последовательности $\lim\limits_{n \to \infty} \dfrac{n^2}{2^n} = 0$. 
+\end{proof}
+
+\boxed{5} $\lim\limits_{n \to \infty} \dfrac{2^n}{n!} = 0$.
+\begin{proof}
+    $0 < \dfrac{2^n}{n!} = \dfrac{2 \cdot 2 \cdot \dots \cdot 2}{1 \cdot 2 \cdot \dots \cdot n} \leq \{for \ n \geq 3\} \leq 2 \cdot \dfrac{2}{n}$ - мы "выкинули" все множители, меньшие 1, а именно: \\ убрали произведение $\dfrac{2}{3}\cdot \dfrac{2}{4} \cdot \dots \cdot \dfrac{2}{n-1} \cdot \dfrac{2}{n}$ - значит мы увеличили дробь. \\
+    Поскольку $2 \cdot \dfrac2n \xrightarrow[n \to \infty]{} 0$. Значит по теореме о зажатой последовательности $\lim\limits_{n \to \infty} \dfrac{2^n}{n!} = 0$.
+\end{proof}
+
+\newpage
+\begin{center}
+    \Huge \textbf{Тимоша желает всем удачно сдать коллоквиум!}
+\end{center}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{image.png}
+    \label{fig:enter-label}
+\end{figure}
 
 \end{document}
