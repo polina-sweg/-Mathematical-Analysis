@@ -327,7 +327,7 @@
 \begin{proof}
     Сначала докажем, что если $\{a_n\}$ сходится, то она фундаментальная. По определению сходимости последовательности: $\forall \varepsilon > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \ |a_n - a| < \varepsilon \ (1)$. \\
     Хотим: $\forall \varepsilon > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n, m \geq N_2(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$. \\
-    $|a_n - a_m| = |(a_n - a) - (a_m - a_n)| \leq |a_n - a| + |a_m - a|$. \\ Согласно $(1)$ неравенство $|a_n - a| < \dfrac{\varepsilon}{2}$ \ и неравенство $|a_m - a| < \dfrac{\varepsilon}{2}$\ выполнены начиная с номера $N_1\left(\dfrac{\varepsilon}{2}\right)$ \ $\Rightarrow$ \ $N_2(\varepsilon) = N_1\left(\dfrac{\varepsilon}{2}\right)$  \ $\Rightarrow$ \ $\{a_n\}$ фундаментальная\\
+    $|a_n - a_m| = |(a_n - a) - (a_m - a)| \leq |a_n - a| + |a_m - a|$. \\ Согласно $(1)$ неравенство $|a_n - a| < \dfrac{\varepsilon}{2}$ \ и неравенство $|a_m - a| < \dfrac{\varepsilon}{2}$\ выполнены начиная с номера $N_1\left(\dfrac{\varepsilon}{2}\right)$ \ $\Rightarrow$ \ $N_2(\varepsilon) = N_1\left(\dfrac{\varepsilon}{2}\right)$  \ $\Rightarrow$ \ $\{a_n\}$ фундаментальная\\
     Теперь докажем в обратную сторону. Пусть $\{a_n\}$ фундаментальная. То есть выполнено следующее условие: $\forall \varepsilon > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n, m \geq N_2(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$. \\
     Возьмём $\varepsilon = 1 \ : \forall n > N_2(1) \ : \ |a_n - a_{N_2(1)+1}| < 1$ (член $a_{N_2(1)+1}$ мы зафиксировали:\ $N_2(1)+1$ - конкретный номер члена последовательности). \ $\Rightarrow$ \ $a_{N_2(1)+1} - 1 < a_n < a_{N_2(1)+1} + 1$. \\
     Положим $C = max\{|a_1|; \ |a_2|; \ ...; |a_{N_2(1)+1}| + 1 \}$. Значит $\forall n \ : \ |a_n| \leq C$ \ $\Rightarrow$ \ $\{a_n\}$ ограничена.\\
@@ -354,7 +354,7 @@ $\forall {x_n}: x_n \xrightarrow[n \to \infty]{} a \ ,x_n \neq a$ (т.е. $\lim\
     \begin{equation}
         \forall \varepsilon > 0 \ \exists \delta = \delta(\varepsilon) : \forall x \in \mathring{U_\delta}(x_0) \Rightarrow |f(x) - A| < \varepsilon
     \end{equation}
-    Рассмотрим произвольную последовательность $x_n$, такую что:  $x_n \xrightarrow[n \to \infty]{} x_0$, причём $\forall x_n \in E$ и $x_n \neq x_0$, где $E$ - область определения функции $f(x)$. Тогда $\forall \varepsilon > 0 \ \exists \ n_0 \ \forall n \geq n_0 \ :x_n \in \mathring{U_\delta}(x_0)$. Так как $x_n$ лежит в $\delta$-окрестности точки $x_0$, то выполнено $(1)$ и $|f(x) < A| < \varepsilon$. А значит: $\forall \varepsilon > 0 \ \forall n \geq n_0 : |f(x_n) - A| < \varepsilon \ \Leftrightarrow \ \lim\limits_{n \to \infty} f(x_n) = A $ \\
+    Рассмотрим произвольную последовательность $x_n$, такую что:  $x_n \xrightarrow[n \to \infty]{} x_0$, причём $\forall x_n \in E$ и $x_n \neq x_0$, где $E$ - область определения функции $f(x)$. Тогда $\forall \varepsilon > 0 \ \exists \ n_0 \ \forall n \geq n_0 \ :x_n \in \mathring{U_\delta}(x_0)$. Так как $x_n$ лежит в $\delta$-окрестности точки $x_0$, то выполнено $(1)$ и $|f(x) - A| < \varepsilon$. А значит: $\forall \varepsilon > 0 \ \forall n \geq n_0 : |f(x_n) - A| < \varepsilon \ \Leftrightarrow \ \lim\limits_{n \to \infty} f(x_n) = A $ \\
     Теперь докажем в обратную сторону: из определения по Гейне следует определение по Коши. Имеем:
     \begin{equation}
         \forall {x_n}: x_n \xrightarrow[n \to \infty]{} a \ ,x_n \neq a \ : \ f(x_n) \xrightarrow[n \to \infty]{}A
