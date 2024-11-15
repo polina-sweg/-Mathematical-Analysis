@@ -137,7 +137,7 @@
     \begin{center}
         $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n \geq N \ : \ |a_n| < \varepsilon$
     \end{center}
-    Последовательность $\{a_n\}$ называется \textbf{отделённой от нуля}, если $\exists \varepsilon_0 \neq 0 \ \ \forall n \ : \ |a_n| > \varepsilon_0$.
+    Последовательность $\{a_n\}$ называется \textbf{отделённой от нуля}, если $\exists  \varepsilon_0 > 0 \ \ \forall n \ : \ |a_n| > \varepsilon_0$.
     \textbf{Теорема об ограниченности сходящейся последовательности.} Всякая сходящаяся последовательноcть $\{a_n\}$ ограничена.
     \begin{proof}
         Т. к. $\{a_n\}$ сходится, то: $\forall \varepsilon  > 0 \ \exists N = N(\varepsilon), N \in \mathbb{N} \ \forall n \geq N \ |a_n - a| < \varepsilon$ \ \ $(1)$. \\
@@ -150,7 +150,7 @@
 \begin{proof}
     $\lim\limits_{n \to \infty} a_n  = a \ \Leftrightarrow \ \forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon): \ |a_n - a| < \varepsilon$. \\
     $\{\alpha_n\}$ - б.м. $\Leftrightarrow$ \ $\forall \varepsilon > 0 \ \exists N = N(\varepsilon) \ \forall n > N(\varepsilon): \ |\alpha_n| < \varepsilon$, где $\alpha_n = a_n - a$. \\
-    Доказательсво "греческое": смотри!
+    Доказательсво "греческое": смотри! (P.S. Смотреть нужно на две верхние строчки, они одинаковые;) )
 \end{proof}
 Рассмторим две последовательности $\{a_n\}$ и $\{b_n\}$. Пусть $\lim\limits_{n \to \infty} a_n = a$ и $\lim\limits_{n \to \infty} b_n = b$. Тогда выполнены следующие свойсва: 
 \begin{enumerate}[itemsep=0mm, topsep=0mm, partopsep=0mm]
@@ -169,7 +169,7 @@
         2.  $\lim\limits_{n \to \infty} a_n = a \ \Leftrightarrow \ a_n = a + \alpha_n$ \ и \ $\lim\limits_{n \to \infty} b_n = b \ \Leftrightarrow \ b_n = b + \beta_n$, \ где $\alpha_n$ и $\beta_n$ - б.м. последовательности. \\
         $\lim\limits_{n \to \infty} (a_n \cdot b_n) = \lim\limits_{n \to \infty} (a + \alpha_n) \cdot (b + \beta_n) = \lim\limits_{n \to \infty} (a \cdot b + a \cdot \beta_n + b \cdot \alpha_n + \alpha_n \cdot \beta_n) = \lim\limits_{n \to \infty} (a \cdot b) + \lim\limits_{n \to \infty} (a \cdot \beta_n) + \lim\limits_{n \to \infty} (b \cdot \alpha_n) + \lim\limits_{n \to \infty} (\alpha_n \cdot \beta_n) = a \cdot b + 0 + 0 + 0 = a \cdot b$  \\
         3. Хотим доказать, что $\dfrac{a_n}{b_n} - \dfrac{a}{b}$ - бесконечно малая. Начнём: \\
-        $\dfrac{a_n}{b_n} - \dfrac{a}{b} = \dfrac{a + \alpha_n}{b + \beta_n} - \dfrac{a}{b} = \dfrac{(a\cdot b + b \cdot \alpha_n) - (a \cdot b + a \cdot \beta_n)}{b \cdot (b + \beta_n)} = \dfrac{1}{b} \cdot \dfrac{1}{b + \beta_n} \cdot (b\cdot \alpha_n - a\cdot \beta_n)$. Понятно, что $b\cdot \alpha_n - a\cdot \beta_n$ - бесконечно малая, так как это сумма б.м (б.м. $\cdot$ огр. = б.м.). А $\dfrac{1}{b} = const$ - ограниченая. А $b + \beta_n$ - отделимая от нуля ($b \neq 0$), значит $\dfrac{1}{b + \beta_n}$ - ограниченная (так как 1 / отд. от нуля = огр.) 
+        $\dfrac{a_n}{b_n} - \dfrac{a}{b} = \dfrac{a + \alpha_n}{b + \beta_n} - \dfrac{a}{b} = \dfrac{(a\cdot b + b \cdot \alpha_n) - (a \cdot b + a \cdot \beta_n)}{b \cdot (b + \beta_n)} = \dfrac{1}{b} \cdot \dfrac{1}{b + \beta_n} \cdot (b\cdot \alpha_n - a\cdot \beta_n)$. Понятно, что $b\cdot \alpha_n - a\cdot \beta_n$ - бесконечно малая, так как это сумма б.м (б.м. $\cdot$ огр. = б.м.). А $\dfrac{1}{b} = const$ - ограниченая. А $b + \beta_n$ - отделимая от нуля ($b \neq 0$ и $b_n = b + \beta_n$ по условию - отделимость от нуля последовательности, сходящейся не к нулю), значит $\dfrac{1}{b + \beta_n}$ - ограниченная (так как 1 / отд. от нуля = огр.) 
 \end{proof}
 
 \section{Предельный переход в неравенствах. Теорема о зажатой последовательности.}
@@ -331,7 +331,7 @@
     Теперь докажем в обратную сторону. Пусть $\{a_n\}$ фундаментальная. То есть выполнено следующее условие: $\forall \varepsilon > 0 \ \ \exists N_2 = N_2(\varepsilon) \ \ \forall n, m \geq N_2(\varepsilon) \ : \ |a_n - a_m| < \varepsilon$. \\
     Возьмём $\varepsilon = 1 \ : \forall n > N_2(1) \ : \ |a_n - a_{N_2(1)+1}| < 1$ (член $a_{N_2(1)+1}$ мы зафиксировали:\ $N_2(1)+1$ - конкретный номер члена последовательности). \ $\Rightarrow$ \ $a_{N_2(1)+1} - 1 < a_n < a_{N_2(1)+1} + 1$. \\
     Положим $C = max\{|a_1|; \ |a_2|; \ ...; |a_{N_2(1)+1}| + 1 \}$. Значит $\forall n \ : \ |a_n| \leq C$ \ $\Rightarrow$ \ $\{a_n\}$ ограничена.\\
-    По теореме Больцано-Вейерштрасса: \ $\exists \{n_k\} \ : \ a_{n_k} \to a$ при $n \to \infty$ \ $\Leftrightarrow$ \\ $\Leftrightarrow$ \ $\forall \varepsilon > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \ |a_n - a| < \varepsilon$. \\
+    По теореме Больцано-Вейерштрасса: \ $\exists \{n_k\} \ : \ a_{n_k} \to a$ при $k \to \infty$ \ $\Leftrightarrow$ \\ $\Leftrightarrow$ \ $\forall \varepsilon > 0 \ \ \exists N_1 = N_1(\varepsilon) \ \ \forall n \geq N_1(\varepsilon) \ : \ |a_{n_k} - a| < \varepsilon$. \\
     Докажем, что предел $\{a_n\}$ тоже равен $a$ : 
     $\forall \varepsilon > 0 \ \ \exists N_3 = N_3(\varepsilon) \ \ \forall n > N_3(\varepsilon) \ : \ |a_n - a| < \varepsilon$. \\
     $|a_n - a| = |(a_n - a_{n_k}) + (a_{n_k} - a)| \leq |a_n - a_{n_k}| + |a_{n_k} - a| < \varepsilon$ \\
@@ -376,11 +376,11 @@ $\forall {x_n}: x_n \xrightarrow[n \to \infty]{} a \ ,x_n \neq a$ (т.е. $\lim\
 \end{proof}
 \textbf{Предельный переход в неравенствах.} Пусть $\lim\limits_{x \to x_0} f(x) = A$ и $\lim\limits_{x \to x_0} g(x) = B$, причём $A, B \in \mathbb{R}$. Если в некоторой прооколотой $\varepsilon$-окрестности точки $x_0$ выпонено неравенство $f(x) \leq g(x)$, то $A \leq B$. 
 \begin{proof}
-    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} f_(x_n) = A$ и $\lim\limits_{n \to \infty} g_(x_n) = B$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : f(x_n) \leq g(x_n) $  Тогда по предельному переходу для последовательностей: $A \leq B$.
+    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} f(x_n) = A$ и $\lim\limits_{n \to \infty} g(x_n) = B$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : f(x_n) \leq g(x_n) $  Тогда по предельному переходу для последовательностей: $A \leq B$.
 \end{proof}
 \textbf{Теорема о зажатой функции.} Рассмотрим три функции: $f(x), g(x), h(x)$. Пусть в некоторой $\varepsilon$-оккрестности точки $x_0$ выполнено следующее неравенство: $h(x) \leq f(x) \leq g(x)$. Причём $\lim\limits_{x \to x_0} h(x) = \lim\limits_{x \to x_0} g(x) = A$. Тогда $\exists\lim\limits_{x \to x_0} f(x) = A$.
 \begin{proof}
-    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} g_(x_n) = A$ и $\lim\limits_{n \to \infty} h_(x_n) = A$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : h(x_n) \leq f(x_n) \leq g(x_n) $  Тогда по теореме о зажатой последовательности: $\exists \lim\limits_{n \to \infty} f(x_n) = A$. В силу произвольности $x_n$: $\exists \lim\limits_{x \to x_0} f(x) = A$
+    Используем определение предела функции по Гейне: рассмотрим последовательность $\{x_n\} : x_n \xrightarrow[n \to \infty]{} x_0, \ x_n \neq x_0$. Тогда согласно определению: $\lim\limits_{n \to \infty} g(x_n) = A$ и $\lim\limits_{n \to \infty} h_(x_n) = A$. Начиная с какого-то номера $n_0$ члены последовательности $\{x_n\}$ будут находиться в проколотой $\varepsilon$-окрестности точки $x_0$, где выполнено следующее неравенство : $\forall n \geq n_0 : h(x_n) \leq f(x_n) \leq g(x_n) $  Тогда по теореме о зажатой последовательности: $\exists \lim\limits_{n \to \infty} f(x_n) = A$. В силу произвольности $x_n$: $\exists \lim\limits_{x \to x_0} f(x) = A$
 \end{proof}
 
 \section{Сходимость стандартных последовательностей.
